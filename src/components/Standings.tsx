@@ -1,7 +1,7 @@
 import { useAnimate } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { useKickStore } from "../lib/useKickStore";
+import { useEffect, useState } from "react";
 import { API } from "../lib/API";
+import { useKickStore } from "../lib/useKickStore";
 
 type Props = {};
 
@@ -43,12 +43,10 @@ export default function Standings({}: Props) {
 
   useEffect(() => {
     let score = async () => {
-      console.log("loading score");
-
       let score = await API().getScore();
       setScore(score);
     };
-    setInterval(score, 5000);
+    setInterval(score, 2000);
   }, []);
   return (
     <div

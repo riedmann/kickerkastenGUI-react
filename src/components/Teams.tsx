@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Button from "./Button";
-import Standings from "./Standings";
 import ButtonStandard from "./ButtonStandard";
+import Standings from "./Standings";
 
 type Props = {};
 

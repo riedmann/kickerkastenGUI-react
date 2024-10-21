@@ -4,11 +4,12 @@ import LightIcon from "./icons/LightIcon";
 import ReloadIcon from "./icons/ReloadIcon";
 import { API } from "../lib/API";
 import BallIcon from "./icons/BallIcon";
+import GlobeIcon from "./icons/GlobeIcon";
 
 type Props = {};
 
 export default function IconPanel({}: Props) {
-  const [program, setProgram] = useState(0);
+  const [program, setProgram] = useState(1);
   return (
     <div className="flex gap-6">
       <Button
@@ -33,6 +34,13 @@ export default function IconPanel({}: Props) {
         }}
       >
         <BallIcon />
+      </Button>
+      <Button
+        onClick={() => {
+          window.location.replace("http://localhost:5000/old");
+        }}
+      >
+        <GlobeIcon />
       </Button>
     </div>
   );

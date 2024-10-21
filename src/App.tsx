@@ -1,10 +1,7 @@
 import "./App.css";
-import Button from "./components/Button";
 import IconPanel from "./components/IconPanel";
-import PlayIcon from "./components/icons/PlayIcon";
-import Teams from "./components/Teams";
-import { API } from "./lib/API";
 import Player from "./components/Player";
+import Teams from "./components/Teams";
 
 function App() {
   return (
