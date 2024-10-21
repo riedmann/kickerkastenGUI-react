@@ -42,10 +42,11 @@ export default function Standings({}: Props) {
   }, [colorChanged, isPlaying]); // Add colorChanged as a dependency to ensure the interval continues alternating
 
   useEffect(() => {
-    let score = () => {
+    let score = async () => {
       console.log("loading score");
 
-      let score = API().getScore();
+      let score = await API().getScore();
+      setScore(score);
     };
     setInterval(score, 5000);
   }, []);
