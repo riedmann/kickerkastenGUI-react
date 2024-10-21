@@ -1,6 +1,7 @@
 import { useAnimate } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useKickStore } from "../lib/useKickStore";
+import { API } from "../lib/API";
 
 type Props = {};
 
@@ -9,6 +10,7 @@ export default function Standings({}: Props) {
   const [rotated, setRotated] = useState(false);
   const [colorChanged, setColorChanged] = useState(false);
   const isPlaying = useKickStore((state) => state.isPlaying);
+  const [score, setScore] = useState({ team1: 0, team2: 0 });
 
   const handleClick = async () => {
     await animate(scope.current, { rotate: rotated ? 0 : 360 });
@@ -39,13 +41,21 @@ export default function Standings({}: Props) {
     return () => clearInterval(intervalId); // Clean up interval on component unmount
   }, [colorChanged, isPlaying]); // Add colorChanged as a dependency to ensure the interval continues alternating
 
+  useEffect(() => {
+    let score = () => {
+      console.log("loading score");
+
+      let score = API().getScore();
+    };
+    setInterval(score, 5000);
+  }, []);
   return (
     <div
       ref={scope}
-      className="flex justify-center bg-cyan-500 text-white rounded-md h-40 items-center"
+      className="flex justify-center bg-cyan-500 text-white rounded-md h-40 items-center text-8xl"
       onClick={handleClick}
     >
-      4 - 0
+      {score.team1} - {score.team2}
     </div>
   );
 }
