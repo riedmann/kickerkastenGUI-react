@@ -5,11 +5,13 @@ import ReloadIcon from "./icons/ReloadIcon";
 import { API } from "../lib/API";
 import BallIcon from "./icons/BallIcon";
 import GlobeIcon from "./icons/GlobeIcon";
+import { useKickStore } from "../lib/useKickStore";
 
 type Props = {};
 
 export default function IconPanel({}: Props) {
   const [program, setProgram] = useState(1);
+  const setIsPlaying = useKickStore((state) => state.setIsPlaying);
   return (
     <div className="flex gap-6">
       <Button
@@ -24,6 +26,7 @@ export default function IconPanel({}: Props) {
       <Button
         onClick={() => {
           API().resetGame();
+          setIsPlaying(false);
         }}
       >
         <ReloadIcon />
